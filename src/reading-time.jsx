@@ -1,13 +1,16 @@
 import React from 'react';
 
 export default class ReadingTime extends React.Component {
+
     static propTypes = {
-        wordsPerMinute: React.PropTypes.number
-    };
+        wordsPerMinute: React.PropTypes.number,
+        textColor: React.PropTypes.string
+    }
 
     static defaultProps = {
-        wordsPerMinute: 270
-    };
+        wordsPerMinute: 1,
+        textColor: 'blue'
+    }
 
     constructor(props) {
         super(props);
@@ -35,13 +38,18 @@ export default class ReadingTime extends React.Component {
     }
 
     render() {
+        const { textColor, ...rest } = this.props;
+        const { readTime } = this.state;
+        const minutes = readTime === 1 ? 'minute' : 'minutes';
+
         return (
-            <div>
-                <p>
+            <div {...rest}>
+                <p style={{ color: textColor }}>
                     Estimated read time:<br /><br />
-                    <span>{this.state.readTime}</span>
+                    <span>{readTime} {minutes}</span>
                 </p>
             </div>
-        );
+        )
     }
 }
+

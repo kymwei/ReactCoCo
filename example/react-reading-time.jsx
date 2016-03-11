@@ -8,7 +8,7 @@ class ReactReadingTime extends React.Component {
     };
 
 
-    //for defaultproperties, you want to use default props 
+    //for defaultproperties, you want to use default props
     static defaultProps = {
         wordsPerMinute: 270
     };
